@@ -3,30 +3,20 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { sendLogin } from "../../actions";
 import { withRouter } from "react-router-dom";
-import { TextField } from "@material-ui/core";
 
-const Login = props => {
-  const [username, setUsername] = useState("");
-  const { login } = props;
+const App = props => {
+  const [inputState, setInputState] = useState("");
+  const { sendLogin, login } = props;
 
   const onChangeHandler = event => {
-    setUsername(event.target.value);
+    setInputState(event.target.value);
   };
 
   return (
     <div className="App" style={{ paddingTop: "10px" }}>
-      <form>
-        <TextField
-          onChange={onChangeHandler}
-          id="standard-basic"
-          label="Standard"
-          value={username}
-        />
-        <button onClick={() => sendLogin(username)}>Logar</button>
-        <h1>{login}</h1>
-        <p>{username}</p>
-        <h2>Mu</h2>
-      </form>
+      <input type="text" onChange={onChangeHandler} />
+      <button onClick={() => sendLogin(inputState)}>Manda</button>
+      <p>{login}</p>
     </div>
   );
 };
@@ -38,4 +28,4 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ sendLogin }, dispatch);
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -9,8 +9,6 @@ const App = props => {
   const [inputState, setInputState] = useState("");
   const { newValue, clickButton, login, history } = props;
 
-  console.log(props);
-
   const onChangeHandler = event => {
     setInputState(event.target.value);
   };
