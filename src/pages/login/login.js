@@ -3,19 +3,25 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { sendLogin } from "../../actions";
 import { withRouter } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
 
 const App = props => {
-  const [inputState, setInputState] = useState("");
+  const [username, setUsername] = useState("");
   const { sendLogin, login } = props;
 
   const onChangeHandler = event => {
-    setInputState(event.target.value);
+    setUsername(event.target.value);
   };
 
   return (
     <div className="App" style={{ paddingTop: "10px" }}>
-      <input type="text" onChange={onChangeHandler} />
-      <button onClick={() => sendLogin(inputState)}>Manda</button>
+      <TextField
+        id="standard-basic"
+        label="Standard"
+        onChange={onChangeHandler}
+        value={username}
+      />
+      <button onClick={() => sendLogin(username)}>Manda</button>
       <p>{login}</p>
     </div>
   );
