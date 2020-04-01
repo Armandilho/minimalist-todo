@@ -2,14 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import Login from "./pages/login/login";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { Store } from "./store";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
-      <App />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact={true} component={App} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
