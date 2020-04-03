@@ -1,7 +1,10 @@
 import { CLICK_TO_SEND_LOGIN } from "../actions/actionTypes";
 
 const initialState = {
-  login: "Teste"
+  login: {
+    username: "",
+    password: ""
+  }
 };
 
 export const loginReducer = (state = initialState, action) => {

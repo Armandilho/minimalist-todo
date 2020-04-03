@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import Login from "./pages/login/login";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
@@ -13,8 +12,7 @@ ReactDOM.render(
     <Provider store={Store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact={true} component={App} />
-          <Route path="/login" component={Login} />
+          <Route path="/" exact={true} component={Login} />
         </Switch>
       </BrowserRouter>
     </Provider>
