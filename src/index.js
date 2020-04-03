@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import Login from "./pages/login/login";
+import Todo from "./pages/todo/todo";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { Store } from "./store";
@@ -13,6 +14,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route path="/" exact={true} component={Login} />
+          <Route path="/Todo" exact={true} component={Todo} />
         </Switch>
       </BrowserRouter>
     </Provider>

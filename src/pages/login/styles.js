@@ -52,4 +52,8 @@ export const CssTextField = withStyles({
   }
 })(TextField);
 
-export const CssButton = withStyles({})(Button);
+export const CssButton = withStyles({
+  root: {
+    marginTop: "20px"
+  }
+})(Button);

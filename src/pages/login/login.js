@@ -17,10 +17,22 @@ const Login = props => {
     username: "",
     password: ""
   });
-  const { sendLogin } = props;
 
   const onChangeHandler = e => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
+  const loginHandler = username => {
+    const { sendLogin, history } = props;
+    sendLogin(username);
+    history.push("/Todo");
+  };
+
+  const validationHandler = e => {
+    //Todo Colocar validções básicas no login!
+    if (!e.target.value) {
+      console.log("Não tem valor!");
+    }
   };
 
   return (
@@ -35,6 +47,7 @@ const Login = props => {
           onChange={onChangeHandler}
           value={credentials.username}
           name="username"
+          onBlur={validationHandler}
         />
         <CssTextField
           id="passwordInput"
@@ -43,11 +56,9 @@ const Login = props => {
           value={credentials.password}
           name="password"
           type="password"
+          onBlur={validationHandler}
         />
-        <CssButton
-          onClick={() => sendLogin(credentials.username)}
-          variant="outlined"
-        >
+        <CssButton onClick={() => loginHandler(credentials)} variant="outlined">
           LOGIN
         </CssButton>
       </CredentialsContainer>
@@ -55,9 +66,7 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = store => ({
-  login: store.loginState.login
-});
+const mapStateToProps = store => ({});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ sendLogin }, dispatch);
