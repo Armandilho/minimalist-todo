@@ -1,1 +1,3 @@
 export const CLICK_TO_SEND_LOGIN = "CLICK_TO_SEND_LOGIN";
+
+export const CLICK_TO_ADD_TODO = "CLICK_TO_ADD_TODO";

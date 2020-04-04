@@ -12,6 +12,6 @@ export const CssContainer = withStyles({
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    height: "100vh"
-  }
+    height: "100vh",
+  },
 })(Container);

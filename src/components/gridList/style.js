@@ -1,5 +1,5 @@
 import { withStyles } from "@material-ui/core/styles";
-import { Container } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 export const ColumnContainer = withStyles({
   root: {
@@ -7,4 +7,4 @@ export const ColumnContainer = withStyles({
     alignItems: "center",
     flexDirection: "column",
   },
-})(Container);
+})(Box);
