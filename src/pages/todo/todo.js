@@ -1,23 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { CssContainer, TypistContainer } from "./styles";
-import Typist from "react-typist";
+import TodoItem from "../../components/todoItem/todoItem";
+import GridList from "../../components/gridList/gridList";
 
-const Todo = props => {
-  const { login } = props;
-  console.log(login);
+const Todo = (props) => {
+  const fakeData = [
+    { title: "Teste1" },
+    { title: "Teste2" },
+    { title: "Teste3" },
+  ];
+
   return (
-    <CssContainer>
-      <TypistContainer>
-        <Typist cursor={{ show: false }}>Wellcome {login}</Typist>
-      </TypistContainer>
-    </CssContainer>
+    <GridList>
+      <TodoItem index={1} title={fakeData[0].title} />
+      <TodoItem index={2} title={fakeData[2].title} />
+    </GridList>
   );
 };
 
-const mapStateToProps = store => ({
-  login: store.loginState.login
+const mapStateToProps = (store) => ({
+  login: store.loginState.login,
 });
 
 export default withRouter(connect(mapStateToProps)(Todo));

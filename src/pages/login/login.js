@@ -14,8 +14,7 @@ import Typist from "react-typist";
 
 const Login = props => {
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: ""
+    username: ""
   });
 
   const onChangeHandler = e => {
@@ -39,7 +38,7 @@ const Login = props => {
     <CssContainer>
       <CredentialsContainer>
         <TypistContainer>
-          <Typist cursor={{ show: false }}>A minimalist app...</Typist>
+          <Typist cursor={{ show: false }}>A minimalist todo app...</Typist>
         </TypistContainer>
         <CssTextField
           id="usernameInput"
@@ -48,18 +47,10 @@ const Login = props => {
           value={credentials.username}
           name="username"
           onBlur={validationHandler}
-        />
-        <CssTextField
-          id="passwordInput"
-          label="password"
-          onChange={onChangeHandler}
-          value={credentials.password}
-          name="password"
-          type="password"
-          onBlur={validationHandler}
+          autoComplete="off"
         />
         <CssButton onClick={() => loginHandler(credentials)} variant="outlined">
-          LOGIN
+          NEXT
         </CssButton>
       </CredentialsContainer>
     </CssContainer>

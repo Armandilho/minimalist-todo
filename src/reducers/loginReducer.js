@@ -2,8 +2,7 @@ import { CLICK_TO_SEND_LOGIN } from "../actions/actionTypes";
 
 const initialState = {
   login: {
-    username: "",
-    password: ""
+    username: ""
   }
 };
 
