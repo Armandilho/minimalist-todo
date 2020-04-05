@@ -22,38 +22,52 @@ export const CssContainer = withStyles({
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    height: "100vh"
-  }
+    height: "100vh",
+  },
 })(Container);
 
 export const CssTextField = withStyles({
   root: {
+    "& .MuiFormHelperText-root.Mui-error": {
+      opacity: 1,
+      position: "absolute",
+      top: "50px",
+    },
+    "& .Mui-error": {
+      color: "rgba(0, 0, 0, 0.54)",
+    },
+    "& label.Mui-error": {
+      color: "rgba(0, 0, 0, 0.54)",
+    },
+    "& label.Mui-focused.Mui-error": {
+      color: "rgba(0, 0, 0, 0.54)",
+    },
     "& .MuiInput-root:hover::before": {
-      borderColor: "rgba(0, 0, 0, 0.54)"
+      borderColor: "rgba(0, 0, 0, 0.54)",
     },
     "& label.Mui-focused": {
-      color: "rgba(0, 0, 0, 0.54)"
+      color: "rgba(0, 0, 0, 0.54)",
     },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "rgba(0, 0, 0, 0.54)"
+      borderBottomColor: "rgba(0, 0, 0, 0.54)",
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "rgba(0, 0, 0, 0.54)"
+        borderColor: "rgba(0, 0, 0, 0.54)",
       },
       "&:hover fieldset": {
-        borderColor: "rgba(0, 0, 0, 0.54)"
+        borderColor: "rgba(0, 0, 0, 0.54)",
       },
       "&.Mui-focused fieldset": {
-        borderColor: "rgba(0, 0, 0, 0.54)"
-      }
+        borderColor: "rgba(0, 0, 0, 0.54)",
+      },
     },
-    margin: "10px 0"
-  }
+    margin: "10px 0",
+  },
 })(TextField);
 
 export const CssButton = withStyles({
   root: {
-    marginTop: "20px"
-  }
+    marginTop: "20px",
+  },
 })(Button);

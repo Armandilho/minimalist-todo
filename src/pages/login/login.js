@@ -8,29 +8,37 @@ import {
   CssContainer,
   TypistContainer,
   CssTextField,
-  CssButton
+  CssButton,
 } from "./styles";
 import Typist from "react-typist";
 
-const Login = props => {
+const Login = (props) => {
   const [credentials, setCredentials] = useState({
-    username: ""
+    username: "",
   });
 
-  const onChangeHandler = e => {
+  const [error, setError] = useState(false);
+
+  const onChangeHandler = (e) => {
+    if (error) {
+      setError(false);
+    }
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const loginHandler = username => {
-    const { sendLogin, history } = props;
-    sendLogin(username);
-    history.push("/Todo");
+  const loginHandler = (username) => {
+    if (!error) {
+      const { sendLogin, history } = props;
+      sendLogin(username);
+      history.push("/Todo");
+    } else {
+      setError(true);
+    }
   };
 
-  const validationHandler = e => {
-    //Todo Colocar validções básicas no login!
+  const validationHandler = (e) => {
     if (!e.target.value) {
-      console.log("Não tem valor!");
+      setError(true);
     }
   };
 
@@ -48,6 +56,8 @@ const Login = props => {
           name="username"
           onBlur={validationHandler}
           autoComplete="off"
+          error={error}
+          helperText={error ? "Preencha esse campo" : ""}
         />
         <CssButton onClick={() => loginHandler(credentials)} variant="outlined">
           NEXT
@@ -57,9 +67,9 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = store => ({});
+const mapStateToProps = (store) => ({});
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ sendLogin }, dispatch);
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
