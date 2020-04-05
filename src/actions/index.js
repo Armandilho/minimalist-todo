@@ -1,4 +1,8 @@
-import { CLICK_TO_SEND_LOGIN, CLICK_TO_ADD_TODO } from "./actionTypes";
+import {
+  CLICK_TO_SEND_LOGIN,
+  CLICK_TO_ADD_TODO,
+  CLICK_TO_DELETE_TODO,
+} from "./actionTypes";
 
 export const sendLogin = (value) => ({
   type: CLICK_TO_SEND_LOGIN,
@@ -7,5 +11,10 @@ export const sendLogin = (value) => ({
 
 export const sendTodo = (value) => ({
   type: CLICK_TO_ADD_TODO,
+  payload: value,
+});
+
+export const deleteTodo = (value) => ({
+  type: CLICK_TO_DELETE_TODO,
   payload: value,
 });

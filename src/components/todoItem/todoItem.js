@@ -5,16 +5,16 @@ import CheckIcon from "@material-ui/icons/Check";
 import DetailsIcon from "@material-ui/icons/Details";
 
 const TodoItem = (props) => {
-  const { title } = props;
+  const { title, deleteTodo, completeTodo, todoDetail } = props;
   return (
     <CssContainer>
-      <CssButton>
+      <CssButton onClick={deleteTodo}>
         <DeleteOutlineIcon />
       </CssButton>
-      <CssButton>
+      <CssButton onClick={completeTodo}>
         <CheckIcon />
       </CssButton>
-      <CssButton>
+      <CssButton onClick={todoDetail}>
         <DetailsIcon />
       </CssButton>
       <TodoTitle>{`${title}`}</TodoTitle>

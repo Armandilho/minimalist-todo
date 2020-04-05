@@ -57,7 +57,7 @@ const Login = (props) => {
           onBlur={validationHandler}
           autoComplete="off"
           error={error}
-          helperText={error ? "Preencha esse campo" : ""}
+          helperText={error ? "this input cannot be empty" : ""}
         />
         <CssButton onClick={() => loginHandler(credentials)} variant="outlined">
           NEXT
