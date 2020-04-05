@@ -14,11 +14,11 @@ const Todo = (props) => {
     description: "",
   });
 
-  const [modal, setModal] = useState(true);
-
-  const handleClickModal = () => {
-    setModal((prevState) => !prevState);
-  };
+  const [todoModal, setTodoModal] = useState({
+    title: "",
+    description: "",
+    modal: false,
+  });
 
   const onChangeHandler = (e) => {
     setTodoValue({ ...todoValue, [e.target.name]: e.target.value });
@@ -41,8 +41,22 @@ const Todo = (props) => {
     console.log("Completed");
   };
 
-  const todoDetail = () => {
-    console.log("Detail");
+  const todoDetailHandler = (todoIndex) => {
+    const { todoList } = props;
+    const inputTodoToModal = todoList.filter(
+      (todoItem, index) => index === todoIndex
+    );
+    setTodoModal({
+      title: inputTodoToModal[0].title,
+      description: inputTodoToModal[0].description,
+      modal: true,
+    });
+  };
+
+  const handleClickModal = () => {
+    setTodoModal({
+      modal: false,
+    });
   };
 
   const TodoList = props.todoList.map((todo, index) => (
@@ -51,7 +65,7 @@ const Todo = (props) => {
       title={todo.title}
       deleteTodo={() => deleteTodoHandler(index)}
       completeTodo={completeTodo}
-      todoDetail={todoDetail}
+      todoDetail={() => todoDetailHandler(index)}
     />
   ));
 
@@ -84,8 +98,12 @@ const Todo = (props) => {
           ADD
         </CssButton>
       </TodoContainer>
-      {/* Todo, mapear e passar title e description para esse modal */}
-      <Dialog open={modal} handleClose={handleClickModal} />
+      <Dialog
+        open={todoModal.modal}
+        handleClose={handleClickModal}
+        title={todoModal.title}
+        description={todoModal.description}
+      />
     </CssContainer>
   );
 };
