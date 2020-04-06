@@ -8,6 +8,14 @@ export const TodoContainer = styled.div`
   flex-direction: column;
 `;
 
+export const Division = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+export const WelcomeMessage = styled.p``;
+
 export const CssContainer = withStyles({
   root: {
     alignItems: "center",

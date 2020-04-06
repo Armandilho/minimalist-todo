@@ -6,9 +6,18 @@ import { withRouter } from "react-router-dom";
 import TodoItem from "../../components/todoItem/todoItem";
 import GridList from "../../components/gridList/gridList";
 import Dialog from "../../components/dialog/dialog";
-import { CssContainer, CssTextField, TodoContainer, CssButton } from "./styles";
+import {
+  CssContainer,
+  CssTextField,
+  TodoContainer,
+  CssButton,
+  WelcomeMessage,
+  Division,
+} from "./styles";
 
 const Todo = (props) => {
+  const { username } = props;
+
   const [todoValue, setTodoValue] = useState({
     title: "",
     description: "",
@@ -72,31 +81,38 @@ const Todo = (props) => {
   return (
     <CssContainer>
       <TodoContainer>
-        <GridList>{TodoList}</GridList>
-        <CssTextField
-          id="titleInput"
-          label="title"
-          name="title"
-          autoComplete="off"
-          value={todoValue.title}
-          onChange={onChangeHandler}
-        />
-        <CssTextField
-          id="descriptionInput"
-          label="description"
-          name="description"
-          autoComplete="off"
-          multiline
-          rows="4"
-          value={todoValue.description}
-          onChange={onChangeHandler}
-        />
-        <CssButton
-          onClick={() => sendTodoHandler(todoValue)}
-          variant="outlined"
-        >
-          ADD
-        </CssButton>
+        <WelcomeMessage>
+          {username}, what we are going to do today?
+        </WelcomeMessage>
+        <Division>
+          <GridList>{TodoList}</GridList>
+        </Division>
+        <Division>
+          <CssTextField
+            id="titleInput"
+            label="title"
+            name="title"
+            autoComplete="off"
+            value={todoValue.title}
+            onChange={onChangeHandler}
+          />
+          <CssTextField
+            id="descriptionInput"
+            label="description"
+            name="description"
+            autoComplete="off"
+            multiline
+            rows="4"
+            value={todoValue.description}
+            onChange={onChangeHandler}
+          />
+          <CssButton
+            onClick={() => sendTodoHandler(todoValue)}
+            variant="outlined"
+          >
+            ADD
+          </CssButton>
+        </Division>
       </TodoContainer>
       <Dialog
         open={todoModal.modal}
@@ -110,6 +126,7 @@ const Todo = (props) => {
 
 const mapStateToProps = (store) => ({
   todoList: store.todoState.todos,
+  username: store.loginState.login.username,
 });
 
 const mapDispatchToProps = (dispatch) =>
