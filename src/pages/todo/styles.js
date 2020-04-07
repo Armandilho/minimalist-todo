@@ -12,9 +12,21 @@ export const Division = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  @media(min-width: 767px){
+    width: 440px;
+    height: 250px;
+  }
 `;
 
-export const WelcomeMessage = styled.p``;
+export const TodoDivision = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+export const WelcomeMessage = styled.p`
+  text-align: center;
+`;
 
 export const CssContainer = withStyles({
   root: {

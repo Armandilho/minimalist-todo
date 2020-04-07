@@ -3,8 +3,9 @@ import { Box } from "@material-ui/core";
 
 export const ColumnContainer = withStyles({
   root: {
-    display: "flex",
     alignItems: "center",
+    display: "flex",
     flexDirection: "column",
+    marginLeft: "-25px",
   },
 })(Box);

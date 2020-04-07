@@ -84,9 +84,7 @@ const Todo = (props) => {
         <WelcomeMessage>
           {username}, what we are going to do today?
         </WelcomeMessage>
-        <Division>
           <GridList>{TodoList}</GridList>
-        </Division>
         <Division>
           <CssTextField
             id="titleInput"
