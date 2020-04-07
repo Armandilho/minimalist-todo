@@ -18,13 +18,18 @@ const styles = (theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
+  typoRoot: {
+    marginRight: "50px",
+  },
 });
 
 const DialogTitle = withStyles(styles)((props) => {
   const { children, classes, onClose, ...other } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
-      <Typography variant="h6">{children}</Typography>
+      <Typography className={classes.typoRoot} variant="h6">
+        {children}
+      </Typography>
       <IconButton
         aria-label="close"
         className={classes.closeButton}

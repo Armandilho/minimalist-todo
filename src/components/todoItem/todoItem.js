@@ -5,7 +5,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import DetailsIcon from "@material-ui/icons/Details";
 
 const TodoItem = (props) => {
-  const { title, deleteTodo, completeTodo, todoDetail } = props;
+  const { title, deleteTodo, completeTodo, todoDetail, index } = props;
   return (
     <CssContainer>
       <CssButton onClick={deleteTodo}>
@@ -17,7 +17,7 @@ const TodoItem = (props) => {
       <CssButton onClick={todoDetail}>
         <DetailsIcon />
       </CssButton>
-      <TodoTitle>{`${title}`}</TodoTitle>
+      <TodoTitle>{`${index + 1} - ${title}`}</TodoTitle>
     </CssContainer>
   );
 };

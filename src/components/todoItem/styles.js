@@ -17,7 +17,9 @@ export const TypistContainer = styled.div`
   justify-content: center;
 `;
 
-export const TodoTitle = styled.h1``;
+export const TodoTitle = styled.p`
+    font-size: 18px;
+`;
 
 export const CssContainer = withStyles({
   root: {

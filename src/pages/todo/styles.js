@@ -12,7 +12,7 @@ export const Division = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  @media(min-width: 767px){
+  @media (min-width: 767px) {
     width: 440px;
     height: 250px;
   }
@@ -26,6 +26,7 @@ export const TodoDivision = styled.div`
 
 export const WelcomeMessage = styled.p`
   text-align: center;
+  line-height: 24px;
 `;
 
 export const CssContainer = withStyles({

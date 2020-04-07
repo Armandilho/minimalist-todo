@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { sendTodo, deleteTodo } from "../../actions";
+import { sendTodo, deleteTodo, completeTodo } from "../../actions";
 import { withRouter } from "react-router-dom";
 import TodoItem from "../../components/todoItem/todoItem";
 import GridList from "../../components/gridList/gridList";
@@ -16,7 +16,7 @@ import {
 } from "./styles";
 
 const Todo = (props) => {
-  const { username } = props;
+  const { username, deleteCount, completedCount } = props;
 
   const [todoValue, setTodoValue] = useState({
     title: "",
@@ -46,8 +46,12 @@ const Todo = (props) => {
     deleteTodo(newTodoList);
   };
 
-  const completeTodo = () => {
-    console.log("Completed");
+  const completeTodoHandler = (todoIndex) => {
+    const { todoList, completeTodo } = props;
+    const newTodoList = todoList.filter(
+      (todoItem, index) => index !== todoIndex
+    );
+    completeTodo(newTodoList);
   };
 
   const todoDetailHandler = (todoIndex) => {
@@ -71,9 +75,10 @@ const Todo = (props) => {
   const TodoList = props.todoList.map((todo, index) => (
     <TodoItem
       key={index}
+      index={index}
       title={todo.title}
       deleteTodo={() => deleteTodoHandler(index)}
-      completeTodo={completeTodo}
+      completeTodo={() => completeTodoHandler(index)}
       todoDetail={() => todoDetailHandler(index)}
     />
   ));
@@ -82,9 +87,10 @@ const Todo = (props) => {
     <CssContainer>
       <TodoContainer>
         <WelcomeMessage>
-          {username}, what we are going to do today?
+          {username}, what we are going to do today? <br />
+          deleted: {deleteCount} completed: {completedCount}
         </WelcomeMessage>
-          <GridList>{TodoList}</GridList>
+        <GridList>{TodoList}</GridList>
         <Division>
           <CssTextField
             id="titleInput"
@@ -124,10 +130,12 @@ const Todo = (props) => {
 
 const mapStateToProps = (store) => ({
   todoList: store.todoState.todos,
+  deleteCount: store.todoState.deleteCount,
+  completedCount: store.todoState.completedCount,
   username: store.loginState.login.username,
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ sendTodo, deleteTodo }, dispatch);
+  bindActionCreators({ sendTodo, deleteTodo, completeTodo }, dispatch);
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Todo));
